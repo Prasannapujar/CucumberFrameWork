@@ -1,4 +1,4 @@
-package amazon.pageobjects;
+package amazon.pageobjects.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
