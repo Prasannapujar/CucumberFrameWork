@@ -18,26 +18,28 @@ import java.util.Properties;
  * All step definition class will extend this class
  * Driver,scenario initialization happens @Before
  */
-public class TestSetup {
+public class TestSetup extends TestBase {
 
     private Logger log = LogManager.getLogger(TestSetup.class);
-    WebDriver driver;
-    Scenario scenario;
-    static String url;
 
+     private TestBase base;
+     public TestSetup( TestBase base)
+     {
+         this.base=base;
+     }
     @Before
-    public void setUp(Scenario scenario) throws IOException {
-        this.scenario=scenario;
+    public void setUp(Scenario scenario1) throws IOException {
+        base.scenario=scenario1;
         WebDriverManager.firefoxdriver().setup();
-        driver=new FirefoxDriver();
+        base.driver=new FirefoxDriver();
         log.info(" Firefox driver is setup ");
         Properties properties= new Properties();
         FileInputStream fileInputStream= new FileInputStream("src/test/Setup.properties");
         properties.load(fileInputStream);
-        url=properties.getProperty("Url");
-        log.debug(" URL of the application is  "+url);
-        driver.get(url);
-        log.info(" Opening up the application with URL "+ url);
+        base.url=properties.getProperty("Url");
+        log.debug(" URL of the application is  "+base.url);
+        base.driver.get(base.url);
+        log.info(" Opening up the application with URL "+ base.url);
     }
 
 
@@ -48,9 +50,10 @@ public class TestSetup {
         {
 
         }
-        if(driver!=null)
+        if(base.driver!=null)
         {
-            driver.quit();
+            base.driver.quit();
+            log.info(" closing the browser ");
         }
     }
 }

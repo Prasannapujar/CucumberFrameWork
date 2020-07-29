@@ -1,4 +1,4 @@
 package stepdefinition;
 
-public class LoginPageStepDef {
+public class LoginPageStepDef extends TestBase{
 }
