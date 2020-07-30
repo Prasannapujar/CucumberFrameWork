@@ -1,3 +1,4 @@
 .idea
 target
 CucumberFrameWork.iml
+src/test/resources/
