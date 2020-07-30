@@ -35,7 +35,7 @@ public class LoginPageStepDef extends TestBase{
 
   }
 
-    @Given("user enter Email id as {string}")
+    @Given("^user enter Email id as (.*)$")
     public void userEnterEmailIdAs(String  email) throws  Exception {
         try
         {
@@ -51,7 +51,7 @@ public class LoginPageStepDef extends TestBase{
         }
     }
 
-    @When("user enter password as {String}")
+    @When("^user enter password as (.*)$")
     public void userEnterPasswordAsPmpAmazon$(String pwd) throws  Exception {
 
         try

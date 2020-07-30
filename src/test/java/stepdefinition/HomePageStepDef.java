@@ -1,7 +1,7 @@
 package stepdefinition;
 
 import amazon.pageobjects.home.HomePage;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -71,5 +71,25 @@ public class HomePageStepDef extends TestBase {
             e.printStackTrace();
             throw new Exception();
         }
+    }
+
+    @And("^User Name (.*) should be displayed at the Headers$")
+    public void userNameShouldBeDisplayedAtTheHeaders(String name) throws  Exception {
+
+        try
+        {
+            HomePage hp= new HomePage(base.driver);
+            String actualName=hp.getLoggedInUserName();
+            Assert.assertTrue(name.equalsIgnoreCase(actualName)," Expected : "+ name + " actual :  "+actualName);
+            base.scenario.log(" Name is displayed properly");
+
+        }catch(Exception e)
+        {
+             log.error(" There was problem in step User Name (.*) should be displayed at the Headers ");
+             e.printStackTrace();
+             throw new Exception();
+        }
+
+
     }
 }
